@@ -6,6 +6,17 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 export default defineConfig({
   build: {
     emptyOutDir: true,
+    lib: {
+      entry: 'src/main.ts',
+      name: 'SvelteViteApp',
+      fileName: (format) => `svelte-vite-app.${format}.js`,
+      formats: ['es', 'umd'],
+    },
+    rollupOptions: {
+      output: {
+        inlineDynamicImports: true,
+      },
+    },
   },
   resolve: {
     alias: {

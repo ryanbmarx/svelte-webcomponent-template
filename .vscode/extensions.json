@@ -1,3 +1,15 @@
 {
-  "recommendations": ["svelte.svelte-vscode"]
+  "recommendations": [
+    // Svelte
+    "svelte.svelte-vscode",
+
+    // TypeScript & ESLint
+    "dbaeumer.vscode-eslint",
+
+    // Tailwind CSS
+    "bradlc.vscode-tailwindcss",
+
+    // Formatting
+    "esbenp.prettier-vscode"
+  ]
 }

@@ -1,18 +1,24 @@
 {
   "name": "webcomponent-svelte",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "svelte": "src/App.wc.svelte",
+  "main": "./dist/svelte-vite-app.umd.js",
+  "module": "./dist/svelte-vite-app.es.js",
+  "types": "./dist/main.d.ts",
   "exports": {
     ".": {
-      "svelte": "./src/App.wc.svelte"
+      "types": "./dist/main.d.ts",
+      "svelte": "./src/App.wc.svelte",
+      "import": "./dist/svelte-vite-app.es.js",
+      "require": "./dist/svelte-vite-app.umd.js"
     }
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "preview:bundled": "npm run build && vite preview --config vite.preview.config.ts",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
