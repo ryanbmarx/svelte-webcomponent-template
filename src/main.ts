@@ -26,6 +26,7 @@
  *    ```
  */
 
+import './assets/reset.css';
 import './app.css';
 import FutureEdMobilityExplorer from './FutureEdMobilityExplorer.wc.svelte';
 

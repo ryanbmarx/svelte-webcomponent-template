@@ -1,5 +1,8 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,css,svelte,scss}',
-    './node_modules/layerchart/**/*.{svelte,ts,js}' // <--- Add this
-  ],
+  content: ['./src/**/*.{html,js,svelte,ts}', './node_modules/layerchart/**/*.{svelte,ts,js}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 };

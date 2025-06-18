@@ -1,9 +1,6 @@
 <svelte:options customElement="future-ed-mobility-explorer" />
 
 <script lang="ts">
-  import './assets/reset.css';
-  import './app.css';
-
   import InterventionChart from './lib/components/InterventionChart.svelte';
 
   import Interventions from './lib/components/Interventions.svelte';
@@ -114,25 +111,26 @@
   }
 </script>
 
-<Interventions
-  bind:selectedIntervention
-  bind:selectedPercentage
-  onsubmit={updateData}
-  {onFeaturedInterventionSelect}
-/>
-<SelectDemographics bind:race bind:income onchange={updateData}></SelectDemographics>
-<InterventionChart {data} bind:selectedIntervention></InterventionChart>
+<main>
+  <Interventions
+    bind:selectedIntervention
+    bind:selectedPercentage
+    onsubmit={updateData}
+    {onFeaturedInterventionSelect}
+  />
+  <SelectDemographics bind:race bind:income onchange={updateData}></SelectDemographics>
+  <InterventionChart {data} bind:selectedIntervention></InterventionChart>
+</main>
 
 <Toaster />
 
 <style lang="postcss">
+  main {
+    display: flex;
+    gap: calc(var(--spacing) * 4);
+    flex-flow: column nowrap;
+  }
   :global {
-    #future-ed-mobility {
-      display: flex;
-      gap: calc(var(--spacing) * 4);
-      flex-flow: column nowrap;
-    }
-
     #future-ed-mobility :is(ul, ol) {
       list-style: none;
       padding: 0;
