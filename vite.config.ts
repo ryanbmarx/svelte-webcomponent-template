@@ -7,6 +7,11 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
   },
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
   plugins: [
     tailwindcss(),
     svelte({
