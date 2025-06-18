@@ -1,6 +1,7 @@
 <svelte:options customElement="svelte-vite-app" />
 
 <script lang="ts">
+  import './assets/reset.css';
   import './app.css';
   import svelteLogo from './assets/svelte.svg';
   import viteLogo from '/vite.svg';
