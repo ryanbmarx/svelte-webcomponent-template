@@ -1,15 +1,13 @@
 <script lang="ts">
   import InterventionChartIncomeText from './InterventionChartIncomeText.svelte';
-
   import HalfRoundBarChart from '$lib/components/HalfRoundBarChart.svelte';
   import Button, {
     type ButtonSize,
     type ButtonVariant,
   } from '$lib/components/ui/button/button.svelte';
   import { onMount } from 'svelte';
-
+  import BadgeCheck from '@lucide/svelte/icons/badge-check';
   import { isGroupData, isSingleData } from '$lib/utils';
-  import { CheckCircle2 } from '@lucide/svelte';
 
   let {
     data,
@@ -63,7 +61,7 @@
       </span>
       {#if activeData?.mobilityExperience}
         <span class="flex flex-none items-center gap-1 text-sm whitespace-nowrap">
-          Mobility Experience <CheckCircle2 size="16" />
+          Mobility Experience <BadgeCheck size="16" />
         </span>
       {/if}
     {/if}
