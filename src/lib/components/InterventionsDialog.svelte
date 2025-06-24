@@ -1,11 +1,10 @@
 <script lang="ts">
   import InterventionLevels from './InterventionLevels.svelte';
-  import * as Collapsible from '$lib/components/ui/collapsible/index.js';
-  import * as Dialog from '$lib/components/ui/dialog/index.js';
+  // import * as Collapsible from '$lib/components/ui/collapsible/index.js';
   import INTERVENTIONS from '@/assets/data/interventions.json';
   import { untrack } from 'svelte';
   import { isArray } from 'lodash-es';
-  import Dialog2 from './ui/Dialog2.svelte';
+  import Dialog from '$lib/components/ui/Dialog.svelte';
 
   let {
     open = $bindable(),
@@ -73,7 +72,7 @@
   </ul>
 {/snippet}
 
-<Dialog2
+<Dialog
   bind:isOpen={open}
   title="Modify policy and program options"
   description="Interventions are grouped by category. Use the controls in each category section to see how
@@ -81,7 +80,7 @@
 >
   <div class="max-h-[50vh] overflow-auto">
     {#each Object.entries(INTERVENTIONS) as [label, interventionList], index}
-      <Collapsible.Root
+      <!-- <Collapsible.Root
         open={!!collapsibles[index]}
         onOpenChange={() => {
           collapsibles[index] = !!!collapsibles[index];
@@ -112,10 +111,10 @@
             {/if}
           {/snippet}
         </Collapsible.Content>
-      </Collapsible.Root>
+      </Collapsible.Root> -->
     {/each}
   </div>
-</Dialog2>
+</Dialog>
 
 <!-- <Dialog.Root bind:open>
   <Dialog.Content class="overflow-hidden border-none pb-0">
