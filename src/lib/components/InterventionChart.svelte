@@ -1,6 +1,6 @@
 <script lang="ts">
   import InterventionChartIncomeText from './InterventionChartIncomeText.svelte';
-  import HalfRoundBarChart from '$lib/components/HalfRoundBarChart.svelte';
+  import HalfRoundBarChart from '@/lib/components/HalfRoundBarChart.svelte';
   import Button, {
     type ButtonSize,
     type ButtonVariant,

@@ -5,6 +5,7 @@
   import INTERVENTIONS from '@/assets/data/interventions.json';
   import { untrack } from 'svelte';
   import { isArray } from 'lodash-es';
+  import Dialog2 from './ui/Dialog2.svelte';
 
   let {
     open = $bindable(),
@@ -72,7 +73,51 @@
   </ul>
 {/snippet}
 
-<Dialog.Root bind:open>
+<Dialog2
+  bind:isOpen={open}
+  title="Modify policy and program options"
+  description="Interventions are grouped by category. Use the controls in each category section to see how
+        an intervention impacts social mobility."
+>
+  <div class="max-h-[50vh] overflow-auto">
+    {#each Object.entries(INTERVENTIONS) as [label, interventionList], index}
+      <Collapsible.Root
+        open={!!collapsibles[index]}
+        onOpenChange={() => {
+          collapsibles[index] = !!!collapsibles[index];
+        }}
+      >
+        <Collapsible.Trigger class="flex w-full items-center justify-between border-t-1 py-2">
+          <span class="text-left font-bold text-balance">
+            {label}
+          </span>
+          <span class="icon flex-none" class:plus={!collapsibles[index]}>
+            <span class="sr-only">Open this collection of interventions</span>
+          </span>
+        </Collapsible.Trigger>
+        <Collapsible.Content forceMount>
+          {#snippet child({ open })}
+            {#if !isArray(interventionList)}
+              {#if open}
+                <ul class="mb-4 flex flex-col gap-4">
+                  {#each Object.entries(interventionList) as [subPolicy, subList]}
+                    <li>
+                      {@render interventionListTemplate({ listItems: subList, label: subPolicy })}
+                    </li>
+                  {/each}
+                </ul>
+              {/if}
+            {:else if open}
+              {@render interventionListTemplate({ listItems: interventionList })}
+            {/if}
+          {/snippet}
+        </Collapsible.Content>
+      </Collapsible.Root>
+    {/each}
+  </div>
+</Dialog2>
+
+<!-- <Dialog.Root bind:open>
   <Dialog.Content class="overflow-hidden border-none pb-0">
     <Dialog.Header>
       <Dialog.Title>Modify policy and program options</Dialog.Title>
@@ -117,19 +162,8 @@
         </Collapsible.Root>
       {/each}
     </div>
-
-    <!-- <div class="footer flex justify-center bg-(--color-future-ed-dark-blue) p-4">
-			<Button
-				class="w-[50%] border-white bg-transparent text-white"
-				size="lg"
-				variant="outline"
-				onclick={handleSubmit}
-			>
-				Submit
-			</Button>
-		</div> -->
   </Dialog.Content>
-</Dialog.Root>
+</Dialog.Root> -->
 
 <style lang="postcss">
   .icon {
@@ -158,9 +192,5 @@
     &.plus::after {
       transform: translate(-50%, -50%) rotate(90deg);
     }
-  }
-  .footer {
-    width: calc(100% + 12 * var(--spacing));
-    margin-left: calc(-6 * var(--spacing));
   }
 </style>
