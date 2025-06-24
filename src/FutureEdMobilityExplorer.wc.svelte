@@ -4,8 +4,8 @@
   import InterventionChart from './lib/components/InterventionChart.svelte';
 
   import Interventions from './lib/components/Interventions.svelte';
-  import { toast } from 'svelte-sonner';
-  import { Toaster } from '$lib/components/ui/sonner';
+  // import { toast } from 'svelte-sonner';
+  // import { Toaster } from '$lib/components/ui/sonner';
   import SelectDemographics from '$lib/components/SelectDemographics.svelte';
 
   import { type ButtonSize, type ButtonVariant } from '$lib/components/ui/button/button.svelte';
@@ -13,6 +13,8 @@
   import { getInterventionData } from '$lib/data';
   import { TriangleAlert } from '@lucide/svelte';
   import { isError } from '$lib/errors';
+
+  import styles from '@/app.css?inline';
 
   const DISPLAY_BUTTONS: {
     value: Display;
@@ -36,7 +38,7 @@
   let selectedPercentage = $state<string>('');
   let selectedIntervention = $state<Intervention>();
   let data = $state<DataResponse>();
-
+  $effect(() => console.log(styles));
   const segment: number = $derived.by(() => {
     switch (race) {
       case 'white':
@@ -95,10 +97,10 @@
       console.error('Fetch error:', e);
       data = undefined;
       const message = isError(e) ? e.message : `${e}`;
-      toast.error(message, {
-        description: 'Please refresh the page',
-        icon: TriangleAlert,
-      });
+      // toast.error(message, {
+      //   description: 'Please refresh the page',
+      //   icon: TriangleAlert,
+      // });
     } finally {
       isLoading = false;
     }
@@ -111,6 +113,7 @@
   }
 </script>
 
+<svelte:element this={'style'}>{styles}</svelte:element>
 <main>
   <Interventions
     bind:selectedIntervention
@@ -122,7 +125,7 @@
   <InterventionChart {data} bind:selectedIntervention></InterventionChart>
 </main>
 
-<Toaster />
+<!-- <Toaster /> -->
 
 <style lang="postcss">
   main {
