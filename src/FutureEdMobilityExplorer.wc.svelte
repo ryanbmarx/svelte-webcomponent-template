@@ -38,7 +38,7 @@
   let selectedPercentage = $state<string>('');
   let selectedIntervention = $state<Intervention>();
   let data = $state<DataResponse>();
-  $effect(() => console.log(styles));
+
   const segment: number = $derived.by(() => {
     switch (race) {
       case 'white':
@@ -77,8 +77,6 @@
     if (!selectedInterventionId || !segment || !selectedPercentage) {
       return;
     }
-
-    console.log('Getting data for %s %s', selectedInterventionId, segment);
 
     try {
       isLoading = true;

@@ -78,7 +78,7 @@ require('webcomponent-svelte')
 
 ## Project Structure
 
-- `src/App.wc.svelte` - Main web component implementation
+- `src/FutureEdMobilityExplorer.wc.svelte` - Main web component implementation
 - `src/main.ts` - Web component registration and exports
 - `bundled.html` - Demo page for the built web component
 - `vite.config.ts` - Build and development configuration
