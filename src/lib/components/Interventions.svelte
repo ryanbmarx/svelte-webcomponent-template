@@ -25,10 +25,10 @@
 <section class="bg-container">
   <div class="flex flex-col gap-2" style:grid-column="1">
     <h3 class="future-ed-header h1" data-counter="1">Select a policy or program</h3>
-    <p class="future-ed-sub-header">
+    <!-- <p class="future-ed-sub-header">
       Choose from the examples below or select your own from a list of hundreds of policies and
       programs
-    </p>
+    </p> -->
   </div>
   <ul>
     {#each FEATURED_INTERVENTIONS as intervention}
@@ -80,5 +80,11 @@
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); /* ~250px */
     align-items: stretch;
+  }
+
+  .bg-container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: calc(var(--spacing) * 4);
   }
 </style>
