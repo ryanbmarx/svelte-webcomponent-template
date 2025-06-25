@@ -5,8 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Svelte Web Component - Built Version Demo</title>
+    <script nomodule src="./dist/future-ed-mobility-explorer.umd.js"></script>
     <!-- Load the built web component - ES Module version -->
-    <script type="module" src="/dist/svelte-vite-app.es.js"></script>
+
+    <script type="module" src="/dist/future-ed-mobility-explorer.es.js"></script>
     <style>
         body {
             margin: 0;
@@ -44,19 +46,18 @@
 
         <h2>Usage Example:</h2>
         <div class="code-example">
-            &lt;svelte-vite-app&gt;&lt;/svelte-vite-app&gt;
+            &lt;future-ed-mobility-explorer&gt;&lt;/future-ed-mobility-explorer&gt;
         </div>
 
         <h2>Live Demo:</h2>
-        <svelte-vite-app></svelte-vite-app>
+        <future-ed-mobility-explorer></future-ed-mobility-explorer>
     </div>
 
     <!-- Alternative UMD version usage example (commented out) -->
 
     <div class="demo-section">
         <h2>UMD Version (Alternative):</h2>
-        <script nomodule src="./dist/svelte-vite-app.umd.js"></script>
-        <svelte-vite-app></svelte-vite-app>
+        <future-ed-mobility-explorer></future-ed-mobility-explorer>
     </div>
 
 </body>
