@@ -1,4 +1,4 @@
-<svelte:options customElement="future-ed-mobility-explorer" />
+<!-- <svelte:options customElement="future-ed-mobility-explorer" /> -->
 
 <script lang="ts">
   import InterventionChart from './lib/components/intervention-chart/InterventionChart.svelte';

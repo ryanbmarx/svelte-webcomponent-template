@@ -5,6 +5,6 @@ export default {
   // for more information about preprocessors
   preprocess: vitePreprocess(),
   compilerOptions: {
-    customElement: true,
+    // customElement: true,
   },
 };

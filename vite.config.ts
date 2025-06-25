@@ -26,19 +26,20 @@ export default defineConfig({
   },
   plugins: [
     tailwindcss(),
-    svelte({
-      include: /\.wc\.svelte$/ as any,
-      compilerOptions: {
-        customElement: true,
-        css: 'injected',
-      },
-    }),
-    svelte({
-      exclude: /\.wc\.svelte$/ as any,
-      compilerOptions: {
-        customElement: false,
-        css: 'injected',
-      },
-    }),
+    svelte(),
+    // svelte({
+    //   include: /\.wc\.svelte$/ as any,
+    //   compilerOptions: {
+    //     customElement: true,
+    //     css: 'injected',
+    //   },
+    // }),
+    // svelte({
+    //   exclude: /\.wc\.svelte$/ as any,
+    //   compilerOptions: {
+    //     customElement: false,
+    //     css: 'injected',
+    //   },
+    // }),
   ],
 });

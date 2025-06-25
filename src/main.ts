@@ -1,32 +1,10 @@
-/**
- * Svelte Web Component Usage Examples:
- *
- * 1. In HTML (ESM):
- *    ```html
- *    <script type="module" src="/dist/svelte-vite-app.es.js"></script>
- *    <svelte-vite-app></svelte-vite-app>
- *    ```
- *
- * 2. In HTML (UMD):
- *    ```html
- *    <script src="/dist/svelte-vite-app.umd.js"></script>
- *    <svelte-vite-app></svelte-vite-app>
- *    ```
- *
- * 3. In JavaScript/TypeScript (ESM):
- *    ```typescript
- *    import 'webcomponent-svelte'
- *    // The custom element is now registered and ready to use
- *    document.body.innerHTML = '<svelte-vite-app></svelte-vite-app>'
- *    ```
- *
- * 4. In a Node.js environment:
- *    ```javascript
- *    require('webcomponent-svelte')
- *    ```
- */
+import { mount } from 'svelte';
+import './app.css';
+import App from './FutureEdMobilityExplorer.wc.svelte';
 
-import FutureEdMobilityExplorer from './FutureEdMobilityExplorer.wc.svelte';
+console.log(document.getElementById('app'));
+const app = mount(App, {
+  target: document.getElementById('app')!,
+});
 
-// The custom element is automatically defined when the component is imported
-export default FutureEdMobilityExplorer;
+export default app;
