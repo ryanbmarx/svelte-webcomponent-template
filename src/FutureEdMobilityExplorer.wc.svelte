@@ -2,18 +2,12 @@
 
 <script lang="ts">
   import InterventionChart from './lib/components/intervention-chart/InterventionChart.svelte';
-
   import Interventions from './lib/components/Interventions.svelte';
-  // import { toast } from 'svelte-sonner';
-  // import { Toaster } from '$lib/components/ui/sonner';
   import SelectDemographics from '$lib/components/SelectDemographics.svelte';
-
   import { type ButtonSize, type ButtonVariant } from '$lib/components/ui/button/button.svelte';
   import { onMount } from 'svelte';
   import { getInterventionData } from '$lib/data';
-  import { TriangleAlert } from '@lucide/svelte';
   import { isError } from '$lib/errors';
-
   import styles from '@/app.css?inline';
 
   const DISPLAY_BUTTONS: {
