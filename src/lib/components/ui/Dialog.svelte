@@ -116,7 +116,7 @@
     background: unset;
     padding: unset;
 
-    position: absolute;
+    position: fixed;
     inset: 50%;
     translate: -50% -50%;
     max-width: 75vw;
