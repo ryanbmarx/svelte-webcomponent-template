@@ -1,9 +1,13 @@
 <script lang="ts">
   import { format } from 'd3-format';
+  import Tooltip from './ui/Tooltip.svelte';
 
   type NetIncomeDirection = 'rises' | 'drops' | 'stays_down' | 'stays_up';
 
-  let { activeData }: { activeData: InterventionDataRow } = $props();
+  let {
+    activeData,
+    selectedIntervention,
+  }: { activeData: InterventionDataRow; selectedIntervention: Intervention | undefined } = $props();
 
   const {
     grossIncomeWithIntervention,
@@ -36,7 +40,9 @@
 
 {#if grossIncomeWithIntervention && netIncomeDifference}
   <h3 class="mb-2 text-center text-lg font-bold">
-    Income after taxes, benefits, and essential costs (age 35)
+    Income after taxes, benefits, and essential costs (age 35) <Tooltip
+      text={selectedIntervention?.help_text ?? ''}
+    />
   </h3>
   {#if direction === 'rises'}
     <p>

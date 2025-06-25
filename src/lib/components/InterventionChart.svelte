@@ -8,6 +8,7 @@
   import { onMount } from 'svelte';
   import BadgeCheck from '@lucide/svelte/icons/badge-check';
   import { isGroupData, isSingleData } from '$lib/utils';
+  import Tooltip from '$lib/components/ui/Tooltip.svelte';
 
   let {
     data,
@@ -46,8 +47,6 @@
   const median = $derived(activeData?.grossIncomeMedianFullPopulation ?? 0);
   const primaryValue = $derived(activeData?.grossIncomeWithIntervention ?? 0);
   const secondaryValue = $derived(activeData?.grossIncomeNoIntervention ?? 0);
-
-  onMount(() => {});
 </script>
 
 <section class="bg-container">
@@ -56,9 +55,10 @@
   </h3>
   <div class="controls">
     {#if selectedIntervention && !!activeData}
-      <span class="intervention mx-auto rounded-md text-center text-sm font-bold text-balance">
+      <h4 class="intervention mx-auto text-center text-xl font-bold text-balance leading-[1.15em]">
         {selectedIntervention.intervention}
-      </span>
+        <Tooltip text={selectedIntervention?.help_text} />
+      </h4>
       {#if activeData?.mobilityExperience}
         <span class="flex flex-none items-center gap-1 text-sm whitespace-nowrap">
           Mobility Experience <BadgeCheck size="16" />
@@ -81,7 +81,10 @@
   </div>
 
   <div class="chart">
-    <h3 class="mb-2 text-center text-lg font-bold">Gross income (age 35)</h3>
+    <h3 class="mb-2 text-center text-lg font-bold">
+      Gross income (age 35)
+      <Tooltip text={selectedIntervention?.help_text ?? ''} />
+    </h3>
     <HalfRoundBarChart
       class={isLoading ? 'invisible' : ''}
       min={0}
@@ -98,7 +101,7 @@
     {/if}
 
     {#if !!activeData}
-      <InterventionChartIncomeText {activeData}></InterventionChartIncomeText>
+      <InterventionChartIncomeText {activeData} {selectedIntervention} />
     {:else}
       {#each ['75%', '95%', '45%'] as line}
         <p
@@ -107,7 +110,7 @@
           role="presentation"
           class="mx-auto my-2 rounded-md bg-(--color-gray-300) text-sm text-(--color-gray-300)"
         >
-          X
+          .
         </p>
       {/each}
     {/if}
@@ -135,15 +138,5 @@
   }
   .comparison {
     margin-top: 1rem;
-  }
-
-  .intervention {
-    padding: var(--spacing) calc(var(--spacing) * 2);
-    color: var(--color-future-ed-blue);
-    border: 1px solid currentColor;
-    max-width: max-content;
-    display: flex;
-    align-items: center;
-    gap: var(--spacingw);
   }
 </style>
