@@ -28,7 +28,6 @@ export default defineConfig({
     tailwindcss(),
     svelte({
       include: /\.wc\.svelte$/ as any,
-      emitCss: false,
       compilerOptions: {
         customElement: true,
         css: 'injected',
