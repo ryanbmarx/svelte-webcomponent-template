@@ -1,7 +1,7 @@
 <svelte:options customElement="future-ed-mobility-explorer" />
 
 <script lang="ts">
-  import InterventionChart from './lib/components/InterventionChart.svelte';
+  import InterventionChart from './lib/components/intervention-chart/InterventionChart.svelte';
 
   import Interventions from './lib/components/Interventions.svelte';
   // import { toast } from 'svelte-sonner';
@@ -40,30 +40,26 @@
   let data = $state<DataResponse>();
 
   const segment: number = $derived.by(() => {
+    const black = {
+      1: 7,
+      2: 8,
+      3: 9,
+    };
+    const hispanic = {
+      1: 4,
+      2: 5,
+      3: 6,
+    };
     switch (race) {
       case 'white':
         // 7-9
-        switch (income) {
-          case 1:
-            return 7;
-          case 2:
-            return 8;
-          case 3:
-            return 9;
-        }
+        return black[income];
       case 'black':
         return income;
 
       case 'hispanic':
         // 4-6
-        switch (income) {
-          case 1:
-            return 4;
-          case 2:
-            return 5;
-          case 3:
-            return 6;
-        }
+        return hispanic[income];
     }
   });
 
@@ -95,10 +91,6 @@
       console.error('Fetch error:', e);
       data = undefined;
       const message = isError(e) ? e.message : `${e}`;
-      // toast.error(message, {
-      //   description: 'Please refresh the page',
-      //   icon: TriangleAlert,
-      // });
     } finally {
       isLoading = false;
     }

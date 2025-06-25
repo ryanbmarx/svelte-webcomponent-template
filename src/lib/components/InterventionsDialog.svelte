@@ -1,6 +1,6 @@
 <script lang="ts">
   import InterventionLevels from './InterventionLevels.svelte';
-  // import * as Collapsible from '$lib/components/ui/collapsible/index.js';
+  import { Collapsible } from 'bits-ui';
   import INTERVENTIONS from '@/assets/data/interventions.json';
   import { untrack } from 'svelte';
   import { isArray } from 'lodash-es';
@@ -80,7 +80,7 @@
 >
   <div class="max-h-[50vh] overflow-auto">
     {#each Object.entries(INTERVENTIONS) as [label, interventionList], index}
-      <!-- <Collapsible.Root
+      <Collapsible.Root
         open={!!collapsibles[index]}
         onOpenChange={() => {
           collapsibles[index] = !!!collapsibles[index];
@@ -98,6 +98,8 @@
           {#snippet child({ open })}
             {#if !isArray(interventionList)}
               {#if open}
+                Scale of impact of policy or program
+
                 <ul class="mb-4 flex flex-col gap-4">
                   {#each Object.entries(interventionList) as [subPolicy, subList]}
                     <li>
@@ -111,7 +113,7 @@
             {/if}
           {/snippet}
         </Collapsible.Content>
-      </Collapsible.Root> -->
+      </Collapsible.Root>
     {/each}
   </div>
 </Dialog>

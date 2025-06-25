@@ -1,11 +1,11 @@
 <script lang="ts">
+  import ChartHeader from './ChartHeader.svelte';
   import InterventionChartIncomeText from './InterventionChartIncomeText.svelte';
   import HalfRoundBarChart from '@/lib/components/HalfRoundBarChart.svelte';
   import Button, {
     type ButtonSize,
     type ButtonVariant,
   } from '$lib/components/ui/button/button.svelte';
-  import { onMount } from 'svelte';
   import BadgeCheck from '@lucide/svelte/icons/badge-check';
   import { isGroupData, isSingleData } from '$lib/utils';
   import Tooltip from '$lib/components/ui/Tooltip.svelte';
@@ -55,15 +55,7 @@
   </h3>
   <div class="controls">
     {#if selectedIntervention && !!activeData}
-      <h4 class="intervention mx-auto text-center text-xl font-bold text-balance leading-[1.15em]">
-        {selectedIntervention.intervention}
-        <Tooltip text={selectedIntervention?.help_text} />
-      </h4>
-      {#if activeData?.mobilityExperience}
-        <span class="flex flex-none items-center gap-1 text-sm whitespace-nowrap">
-          Mobility Experience <BadgeCheck size="16" />
-        </span>
-      {/if}
+      <ChartHeader {selectedIntervention} isMobilityExperience={!!activeData?.mobilityExperience} />
     {/if}
     <div role="toolbar" class="relative flex w-full gap-4" class:hidden={!isGroupData(data)}>
       {#each DISPLAY_BUTTONS as { size = "sm", variant = "default", value, label }}

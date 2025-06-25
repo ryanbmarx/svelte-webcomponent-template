@@ -1,6 +1,6 @@
 <script lang="ts">
   import { format } from 'd3-format';
-  import Tooltip from './ui/Tooltip.svelte';
+  import Tooltip from '$lib/components/ui/Tooltip.svelte';
 
   type NetIncomeDirection = 'rises' | 'drops' | 'stays_down' | 'stays_up';
 

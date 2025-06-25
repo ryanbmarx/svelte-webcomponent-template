@@ -146,7 +146,7 @@
   justify-content: flex-start;
 }
 
-.future-ed-header::before {
+/* .future-ed-header::before {
   flex: 0 0 calc(0.75 * var(--header-font-size));
   content: attr(data-counter);
   font-variation-settings: 'wdth' 100;
@@ -162,7 +162,7 @@
   justify-content: center;
   transform: translate(0, 0.15em);
   margin-bottom: 0.5rem;
-}
+} */
 
 .future-ed-sub-header {
   @apply text-sm;

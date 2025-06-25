@@ -27,12 +27,14 @@ async function data() {
       confidence_level,
       help_text,
     } = f;
+
     return {
       id,
       policy_system,
       sub_policy_system,
       intervention,
-      confidence_level,
+      confidence_level:
+        confidence_level === 'TRUE' || confidence_level === 'FALSE' ? '' : confidence_level,
       help_text,
       featured: getFeatured(featured),
     };
