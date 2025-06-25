@@ -9,6 +9,8 @@ type Intervention = {
   policy_system: string;
   intervention: string;
   featured?: string | null;
+  confidence_level?: string;
+  help_text?: string;
 };
 type Display = 'group' | 'individual';
 

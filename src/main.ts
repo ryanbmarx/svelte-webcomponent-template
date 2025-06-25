@@ -26,8 +26,6 @@
  *    ```
  */
 
-import './assets/reset.css';
-import './app.css';
 import FutureEdMobilityExplorer from './FutureEdMobilityExplorer.wc.svelte';
 
 // The custom element is automatically defined when the component is imported

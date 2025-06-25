@@ -14,68 +14,78 @@ const outputPathFeatured = path.join(__dirname, '../src/assets/data/featuredInte
 const results = [];
 
 async function data() {
-	const file = await fs.readFile(filePath, 'utf-8');
+  const file = await fs.readFile(filePath, 'utf-8');
 
-	// Parse the csv and cherry pick the columns we want.
-	const parsed = csvParse(file).map(
-		({ id, sub_policy_system, policy_system, intervention, featured }) => {
-			return {
-				id,
-				policy_system,
-				sub_policy_system,
-				intervention,
-				featured: getFeatured(featured),
-			};
-		}
-	);
+  // Parse the csv and cherry pick the columns we want.
+  const parsed = csvParse(file).map(
+    ({
+      id,
+      sub_policy_system,
+      policy_system,
+      intervention,
+      featured,
+      confidence_level,
+      help_text,
+    }) => {
+      return {
+        id,
+        policy_system,
+        sub_policy_system,
+        intervention,
+        confidence_level,
+        help_text,
+        featured: getFeatured(featured),
+      };
+    }
+  );
 
-	const featured = parsed.filter((f) => !!f.featured);
+  const featured = parsed.filter((f) => !!f.featured);
 
-	const grouped = groupBy(parsed, 'policy_system');
+  const grouped = groupBy(parsed, 'policy_system');
 
-	// Create a sorted version of the grouped data
-	const sortedGrouped = Object.keys(grouped)
-		.sort()
-		.reduce((acc, key) => {
-			acc[key] = grouped[key];
-			return acc;
-		}, {});
+  // Create a sorted version of the grouped data
+  const sortedGrouped = Object.keys(grouped)
+    .sort()
+    .reduce((acc, key) => {
+      acc[key] = grouped[key];
+      return acc;
+    }, {});
 
-	// Now repeat for the combos
-	const groupedCombos = groupBy(sortedGrouped.Combinations, (combo) =>
-		combo['sub_policy_system'].trim()
-	);
+  // Now repeat for the combos
+  const groupedCombos = groupBy(sortedGrouped.Combinations, (combo) =>
+    combo['sub_policy_system'].trim()
+  );
 
-	sortedGrouped.Combinations = Object.keys(groupedCombos)
-		.sort()
-		.reduce((acc, key) => {
-			acc[key] = groupedCombos[key];
-			return acc;
-		}, {});
+  sortedGrouped.Combinations = Object.keys(groupedCombos)
+    .sort()
+    .reduce((acc, key) => {
+      acc[key] = groupedCombos[key];
+      return acc;
+    }, {});
 
-	// Write the parsed data to JSON file
-	await Promise.all([
-		fs.writeFile(outputPathFeatured, JSON.stringify(featured, null, 2), 'utf-8'),
-		fs.writeFile(outputPath, JSON.stringify(sortedGrouped, null, 2), 'utf-8'),
-	]);
+  // Write the parsed data to JSON file
+  await Promise.all([
+    fs.writeFile(outputPathFeatured, JSON.stringify(featured, null, 2), 'utf-8'),
+    fs.writeFile(outputPath, JSON.stringify(sortedGrouped, null, 2), 'utf-8'),
+  ]);
 
-	console.log(`JSON file written successfully to: ${outputPath}`);
+  console.log(`JSON file written successfully to: ${outputPath}`);
 }
 
 data().catch((error) => {
-	console.error('Error:', error);
+  console.error('Error:', error);
 });
 
 function getFeatured(val) {
-	if (!val) return null;
-	switch (val) {
-		case '10%':
-			return '10';
-		case '50%':
-			return '50';
-		case '75%':
-			return '75';
-		case '100%':
-			return '100';
-	}
+  if (!val) return null;
+  switch (val) {
+    case '10%':
+      return '10';
+    case '50%':
+      return '50';
+    case '75%':
+      return '75';
+    case '100%':
+      return '100';
+  }
 }
