@@ -1,4 +1,4 @@
-id,policy_system,sub_policy_system,intervention,featured,Confidence Level, Help Text,,,
+id,policy_system,sub_policy_system,intervention,featured,confidence_level,help_text,,,
 135,Education,,Attending a high quality Head Start program ,,Well-Supported Projection,Effect on a child's future income as a result of attending a high quality Head Start program,,,
 145,Education,,Attending a model preschool program (moderate estimate),50%,Well-Supported Projection,Effect on a child's future income as a result of attending a model preschool program (optimistic estimate),,,
 150,Education,,Attending a model preschool program (optimistic estimate),,Exploratory Projection,Effect on a child's future income as a result of attending a model preschool program (optimistic estimate),,,

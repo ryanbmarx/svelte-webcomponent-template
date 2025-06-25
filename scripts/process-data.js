@@ -17,8 +17,8 @@ async function data() {
   const file = await fs.readFile(filePath, 'utf-8');
 
   // Parse the csv and cherry pick the columns we want.
-  const parsed = csvParse(file).map(
-    ({
+  const parsed = csvParse(file).map((f) => {
+    const {
       id,
       sub_policy_system,
       policy_system,
@@ -26,18 +26,17 @@ async function data() {
       featured,
       confidence_level,
       help_text,
-    }) => {
-      return {
-        id,
-        policy_system,
-        sub_policy_system,
-        intervention,
-        confidence_level,
-        help_text,
-        featured: getFeatured(featured),
-      };
-    }
-  );
+    } = f;
+    return {
+      id,
+      policy_system,
+      sub_policy_system,
+      intervention,
+      confidence_level,
+      help_text,
+      featured: getFeatured(featured),
+    };
+  });
 
   const featured = parsed.filter((f) => !!f.featured);
 
