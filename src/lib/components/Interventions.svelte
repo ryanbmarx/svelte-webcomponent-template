@@ -35,7 +35,7 @@
       {@const isSelected = selectedIntervention?.id === intervention.id}
       <li>
         <Button
-          class="relative m-auto h-full w-full leading-[1.15]"
+          class="relative m-auto h-full w-full leading-[1.15] px-8"
           size="lg"
           variant={isSelected ? 'outline-selected' : 'outline'}
           onclick={() => {
