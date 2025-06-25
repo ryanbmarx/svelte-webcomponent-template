@@ -51,8 +51,8 @@ export default defineConfig({
   base: '/future-ed-mobility/',
   resolve: {
     alias: {
-      $lib: path.resolve('./src/lib'),
-      $: path.resolve('./src'),
+      '@': '/src',
+      $lib: '/src/lib',
     },
   },
   build: {

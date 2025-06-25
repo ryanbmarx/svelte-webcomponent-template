@@ -8,7 +8,7 @@
   import { onMount } from 'svelte';
   import { getInterventionData } from '$lib/data';
   import { isError } from '$lib/errors';
-  import styles from '@/app.css?inline';
+  // import styles from '@/app.css?inline';
 
   const DISPLAY_BUTTONS: {
     value: Display;
@@ -97,7 +97,7 @@
   }
 </script>
 
-<svelte:element this={'style'}>{styles}</svelte:element>
+<!-- <svelte:element this={'style'}>{styles}</svelte:element> -->
 <main>
   <Interventions
     bind:selectedIntervention
