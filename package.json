@@ -18,7 +18,7 @@
     "dev": "npm run data && vite",
     "build": "npm run data && vite build",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
-    "data": "mkdir -p src/assets/data && node ./scripts/process-data.js",
+    "data": "echo 'There is no data step'",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "preview": "vite preview"
