@@ -20,6 +20,11 @@ A modern web component built with Svelte, TypeScript, and Vite. This template cr
 
 ## Quick Start
 
+- rename web component
+- rename main file
+- rename url
+- update dev.html at least with component name
+
 1. Install dependencies:
    ```bash
    npm install
