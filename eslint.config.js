@@ -27,6 +27,18 @@ export default tseslint.config(
     },
   },
   {
+    files: ['**/*.ts', '**/*.tsx', '**/*.svelte'],
+    rules: {
+      'no-undef': 'off', // TypeScript handles this
+    },
+  },
+  {
+    files: ['**/*.d.ts'],
+    rules: {
+      '@typescript-eslint/triple-slash-reference': 'off',
+    },
+  },
+  {
     ignores: ['build/', 'dist/', '.svelte-kit/', 'node_modules/'],
   }
 );
