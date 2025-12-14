@@ -4,8 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-:root,
-:host {
+@theme {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);

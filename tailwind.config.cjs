@@ -5,4 +5,5 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist: [], // Add classnames here that should ALWAYS be generated.
 };
